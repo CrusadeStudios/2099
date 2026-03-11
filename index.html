@@ -1,81 +1,21 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Battle of BTC - 2099</title>
-
     <style>
-
         body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #000; }
-
-        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
+        iframe { position: fixed; top: 0; left: 0; width: 100dvw; height: 100dvh; border: none; }
     </style>
-
 </head>
-
 <body>
-
     <iframe 
-
         id="main-frame"
-
         src="https://ordinals.com/content/513ce5fa94bc2b01240904b70c29af19a0db94bef019633a828571698cb11177i0"
-
         allow="accelerometer; autoplay; gyroscope; xr-spatial-tracking; fullscreen"
-
         sandbox="allow-scripts allow-pointer-lock"
-
-        style="width:100vw; height:100vh;">
-
+        style="width:100dvw; height:100dvh;">
     </iframe>
-
-
-
-    <script>
-
-        // TRICK: Sometimes these scripts look at the parent URL to decide what to load.
-
-        // We ensure the iframe has focus immediately.
-
-        const frame = document.getElementById('main-frame');
-
-        
-
-        window.addEventListener('message', (event) => {
-
-            // If the script is looking for a signal, we send a 'ready'
-
-            if (event.data === 'request_id') {
-
-                frame.contentWindow.postMessage('start', '*');
-
-            }
-
-        });
-
-
-
-        // Forced wake-up call for the 3D engine
-
-        setInterval(() => {
-
-            if (document.activeElement !== frame) {
-
-                frame.focus();
-
-            }
-
-        }, 1000);
-
-    </script>
-
 </body>
-
 </html>
